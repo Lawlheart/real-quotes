@@ -37,8 +37,7 @@ angular.module('quotesApp', ['ui.router'])
         percentPosition: true,
         columnWidth: 100
       });
-      $('.shadow').css('display', 'block');
-    }, 500);
+    }, 1000);
   });
 })
 
@@ -53,7 +52,6 @@ angular.module('quotesApp', ['ui.router'])
         percentPosition: true,
         columnWidth: 100
       });
-      $('.shadow').css('display', 'block');
     }, 1000);
   });
   $scope.update = function(id, update) {
@@ -71,7 +69,7 @@ angular.module('quotesApp', ['ui.router'])
   }; 
 })
 
-.controller('NewQuoteController', function($scope, $http) {
+.controller('NewQuoteController', function($scope, $http, $location) {
   $scope.test = 'New Quote';
   $scope.user = 'LawlietBlack';
   $scope.userId = '1337';
@@ -89,6 +87,7 @@ angular.module('quotesApp', ['ui.router'])
       starred: []
     }).success(function(data) {
       console.log(data);
+      $location.path('/myquotes')
     }).error(function(err) {
       console.log(err);
     });

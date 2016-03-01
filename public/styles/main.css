@@ -32,7 +32,7 @@ header.navigation {
     float: left;
     max-height: 60px;
     padding-left: 1em;
-    padding-right: 2em; }
+    padding-right: 1em; }
     header.navigation .logo img {
       max-height: 60px;
       padding: 0.8em 0; }
@@ -81,13 +81,17 @@ header.navigation {
     text-align: right;
     width: 100%;
     z-index: 9999; }
+    header.navigation ul li.nav-link.title {
+      display: none; }
     @media screen and (min-width: 53.75em) {
       header.navigation ul li.nav-link {
         background: transparent;
         display: inline;
         line-height: 60px;
         text-decoration: none;
-        width: auto; } }
+        width: auto; }
+        header.navigation ul li.nav-link.title {
+          display: inline; } }
     header.navigation ul li.nav-link a {
       color: rgba(255, 255, 255, 0.7);
       display: inline-block;
@@ -248,11 +252,15 @@ html, body {
 .card {
   background-color: #555;
   width: 240px;
-  margin: 20px; }
+  margin: 20px;
+  position: relative; }
   .card::after {
     clear: both;
     content: "";
     display: table; }
+  .card img {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%); }
   .card .quote {
     font-family: 'PT Sans', serif;
     font-style: italic;
@@ -276,7 +284,6 @@ html, body {
 
 .shadow {
   content: '';
-  display: none;
   position: absolute;
   top: 0;
   left: 0;
@@ -285,13 +292,30 @@ html, body {
   box-shadow: inset 10px 10px 20px 0 #555, inset -10px -10px 20px 0 #555; }
 
 #newquote {
+  max-width: 68em;
+  margin-left: auto;
+  margin-right: auto;
   color: #ccc;
   width: 90%;
   margin: 20px auto;
-  max-width: 290px; }
+  max-width: 800px; }
+  #newquote::after {
+    clear: both;
+    content: "";
+    display: table; }
+  #newquote .half {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 48.82117%; }
+    #newquote .half:last-child {
+      margin-right: 0; }
+  #newquote .image {
+    min-height: 200px; }
+  #newquote .card {
+    margin: 0; }
   #newquote h1 {
-    font-family: 'Vidaloka', sans-serif;
-    text-align: center; }
+    font-family: 'Vidaloka', sans-serif; }
   #newquote label {
     font-family: 'Lobster', serif;
     font-size: 16px;

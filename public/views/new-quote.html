@@ -1,14 +1,29 @@
 <main id="newquote">
-  <h1>Create new "Quote"</h1>
+  <div class="new-quote half">
+    <h1>Create new "Quote"</h1>
 
-  <label for="quote-url">Image Url</label>
-  <input type="text" name="quote-url" ng-model="newQuote.img">
+    <label for="quote-url">Image Url</label>
+    <input type="text" name="quote-url" ng-model="newQuote.img">
 
-  <label for="quote-text">Quote</label>
-  <input type="text" name="quote-text" ng-model="newQuote.quote">
+    <label for="quote-text">Quote</label>
+    <input type="text" name="quote-text" ng-model="newQuote.quote">
 
-  <label for="quote-source">Source</label>
-  <input type="text" name="quote-source" ng-model="newQuote.source">
+    <label for="quote-source">Source</label>
+    <input type="text" name="quote-source" ng-model="newQuote.source">
 
-  <button class="btn make-quote" ng-click="createQuote()" ng-disabled="(!newQuote.source || !newQuote.quote || !newQuote.img)">Create</button>
+    <button class="btn make-quote" ng-click="createQuote()" ng-disabled="(!newQuote.source || !newQuote.quote || !newQuote.img)">Create</button>
+  </div>
+
+  <div class="preview half">
+    <h1>Preview</h1>
+    <div class="card">
+      <div class="image">
+        <img class="card-img" src="#" ng-src="{{newQuote.img}}" alt="" ng-hide="!newQuote.img">
+      </div>
+      <div class="quote">
+        "{{newQuote.quote}}"<span class="source"> - {{newQuote.source}}</span>
+      </div>
+      <div class="shadow"></div>
+    </div>
+  </div>
 </main>
