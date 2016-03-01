@@ -3,14 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <title>Hello World</title>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.css">
   <link rel="stylesheet" href="/public/styles/main.css">
+  <base href="/">
 </head>
-<body ng-app="quotesApp" ng-controller="MainController">
-  <h1>{{test}}</h1>
+<body ng-app="quotesApp">
+  <header class="navigation" role="banner">
+    <div class="navigation-wrapper">
+      <a href="javascript:void(0)" class="logo">
+        <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png" alt="Logo Image">
+      </a>
+      <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
+      <nav role="navigation">
+        <ul id="js-navigation-menu" class="navigation-menu show">
+          <li class="nav-link"><a href="/">Recent</a></li>
+          <li class="nav-link"><a href="/myquotes">My Quotes</a></li>
+          <li class="nav-link"><a href="/newquote">Create</a></li>
+        </ul>
+      </nav>
+      <div class="navigation-tools">
+        <ul id="login-menu" class="navigation-menu show">
+          <li class="nav-link greeting">Hello User!</li>
+          <li class="nav-link"><a href="javascript:void(0)">Login</a></li>
+          <li class="nav-link"><a href="javascript:void(0)">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+
+  <div ui-view></div>
 
   
   <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.js'></script>
+  <script src='//imagesloaded.desandro.com/imagesloaded.pkgd.js'></script>
   <script src='//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular.js'></script>
+  <script src='//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.js'></script>
+  <script src='//cdnjs.cloudflare.com/ajax/libs/masonry/4.0.0/masonry.pkgd.js'></script>
   <script src='controllers/main.client.js'></script>
 </body>
 </html>

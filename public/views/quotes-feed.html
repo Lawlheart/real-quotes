@@ -1,0 +1,15 @@
+<main>
+  <div class="grid">
+    <div class="card grid-item" ng-repeat="card in quotes" ng-hide="!card.img || !card.source || !card.quote">
+      <div class="image">
+        <img  class="card-img" src="#" ng-src="{{card.img}}" alt="" />
+      </div>
+      <div class="quote">
+        "{{card.quote}}"<span class="source"> - {{card.source}}</span>
+      </div>
+      <div class="shadow"></div>
+      <button class="delete-quote" ng-click="delete(card._id)" ng-show="editEnabled"><i class="fa fa-times"></i></button>
+    </div>
+  </div>
+</main>
+

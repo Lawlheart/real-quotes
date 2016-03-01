@@ -1,4 +1,106 @@
-body {
+@import url(https://fonts.googleapis.com/css?family=Lobster);
+@import url(https://fonts.googleapis.com/css?family=Vidaloka:400,700);
+@import url(https://fonts.googleapis.com/css?family=PT+Sans:400,400italic);
+
+@import "bourbon/bourbon";
+@import "neat/neat";
+@import "variables";
+@import "refills";
+
+html, body {
   background-color: #222;
   color: #fff;
+  height: 100%;
+  overflow: auto;
+}
+header.navigation ul li.nav-link.greeting {
+  @media screen and (max-width: $large-screen) {
+    display: none;
+
+  }
+}
+
+main {
+  @media screen and (max-width: $large-screen) {
+    margin-top: 100px;
+    header.navigation ul li.nav-link.greeting {
+      
+    }
+  }
+}
+
+.card {
+  @include clearfix;
+  background-color: #555;
+  width: 240px;
+  margin: 20px;
+  .quote {
+    font-family: 'PT Sans', serif;
+    font-style: italic;
+    background: linear-gradient(to bottom, transparent, transparent 10%,  #555 50%);
+    font-size: 18px;
+    padding: 12px;
+    margin-top: -4px;
+    .source {
+      display: block;
+      text-align: right;
+    }
+  }
+  .card-img {
+    box-shadow: inset 0 0 10px #000000;
+    max-width: 240px;
+  }
+  .delete-quote{
+    margin: 4px;
+    cursor: pointer;
+    z-index: 100;
+    position: relative;
+    background-color: #444;
+    border: 1px solid #333;
+  }
+}
+.shadow {
+  content: '';
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: inset 10px 10px 20px 0 #555, inset -10px -10px 20px 0 #555;
+}
+
+#newquote {
+  color: #ccc;
+  width: 90%;
+  margin: 20px auto;
+  max-width: 290px;
+  h1 {
+    font-family: 'Vidaloka', sans-serif;
+    text-align: center;}
+  label {
+    font-family: 'Lobster', serif;
+    font-size: 16px;
+    display: block;
+    margin-top: 10px;}
+  input {
+    margin-bottom: 10px;
+    font-size: 18px;
+    padding: 4px 8px;
+    background-color: #111;
+    color: #ccc;
+    border-radius: 3px;
+    border: 2px solid #181818;
+    width: 270px;}
+  button {
+    font-family: 'Vidaloka', sans-serif;
+    display: block;
+    width: 270px;
+    margin-top: 10px;
+    padding: 4px 10px;
+    background-color: #555;
+    border: 1px solid #444;
+    cursor: pointer;
+
+  }
 }

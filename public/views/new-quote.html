@@ -1,0 +1,14 @@
+<main id="newquote">
+  <h1>Create new "Quote"</h1>
+
+  <label for="quote-url">Image Url</label>
+  <input type="text" name="quote-url" ng-model="newQuote.img">
+
+  <label for="quote-text">Quote</label>
+  <input type="text" name="quote-text" ng-model="newQuote.quote">
+
+  <label for="quote-source">Source</label>
+  <input type="text" name="quote-source" ng-model="newQuote.source">
+
+  <button class="btn make-quote" ng-click="createQuote()" ng-disabled="(!newQuote.source || !newQuote.quote || !newQuote.img)">Create</button>
+</main>
