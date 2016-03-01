@@ -8,7 +8,7 @@ try { require('dotenv').load() } catch(Error) {};
 
 var app = express();
 
-mongoose.connect(process.env.MONGO_URI);
+mongoose.connect(process.env.MONGO_URI || process.env.MONGOLAB_URI);
 
 app.use('/public', express.static(process.cwd() + '/public'));
 app.use('/controllers', express.static(process.cwd() + '/app/controllers'))
