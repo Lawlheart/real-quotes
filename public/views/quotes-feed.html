@@ -1,14 +1,14 @@
 <main>
   <div class="grid">
-    <div class="card grid-item" ng-repeat="card in quotes" ng-hide="!card.img || !card.source || !card.quote">
+    <div class="card grid-item" ng-repeat="card in quotes | reverse" ng-hide="!card.img || !card.source || !card.quote">
       <div class="image">
-        <img  class="card-img" src="#" ng-src="{{card.img}}" alt="" />
+        <img  class="card-img" src="/public/img/bad-image.png" ng-src="{{card.img}}" alt="" err-src="/public/img/bad-image.png">
       </div>
       <div class="quote">
         "{{card.quote}}"<span class="source"> - {{card.source}}</span>
       </div>
       <div class="shadow"></div>
-      <button class="delete-quote" ng-click="delete(card._id)" ng-show="editEnabled"><i class="fa fa-times"></i></button>
+      <button class="delete-quote" ng-click="delete(card._id)" ng-show="editEnabled"><i class="fa fa-times"></i> delete</button>
     </div>
   </div>
 </main>

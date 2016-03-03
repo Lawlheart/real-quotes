@@ -2,13 +2,7 @@ angular.module('quotesApp', ['ui.router'])
 
 .config(function($urlRouterProvider, $locationProvider, $stateProvider) {
   $urlRouterProvider.otherwise('/');
-
-  // routing
-    // user pages
-
-    // login
-    // logout
-
+  
   $stateProvider.state('home', {
     url: '/',
     templateUrl: 'public/views/quotes-feed.html',
@@ -20,14 +14,21 @@ angular.module('quotesApp', ['ui.router'])
   }).state('myquotes', {
     url: '/myquotes',
     templateUrl: 'public/views/quotes-feed.html',
+    controller: 'MyQuotesController'
+  }).state('login', {
+    url: '/login',
+    templateUrl: 'public/views/login.html',
+    controller: 'LoginController'
+  }).state('user', {
+    url: '/user/:userid',
+    templateUrl: 'public/views/quotes-feed.html',
     controller: 'UserQuotesController'
-  })
-
+  });
   $locationProvider.html5Mode(true);
 })
 
-.controller('MainController', function($scope, $http, $timeout) {
-  $scope.test = 'Hello World';
+
+.controller('MainController', function($scope, $http, $timeout, $auth) {
   $scope.editEnabled = false;
   $http.get('api/quotes').success(function(data) {
     $scope.quotes = data;
@@ -41,10 +42,26 @@ angular.module('quotesApp', ['ui.router'])
   });
 })
 
-.controller('UserQuotesController', function($scope, $http, $timeout) {
-  $scope.userId = '1337';
+.controller('UserQuotesController', function($scope, $http, $stateParams, $timeout) {
+  $http.get('api/' + $stateParams.userid + '/quotes').success(function(data) {
+    $scope.quotes = data;
+    $timeout(function() {
+      $('.grid').masonry({
+        itemSelector: '.grid-item',
+        percentPosition: true,
+        columnWidth: 100
+      });
+    }, 1000);
+  });
+})
+
+.controller('MyQuotesController', function($scope, $http, $timeout, $auth, $location) {
+  $scope.user = $auth.getCurrentUser();
+  if(!$scope.user) {
+    $location.path('/login');
+  }
   $scope.editEnabled = true;
-  $http.get('api/' + $scope.userId + '/quotes').success(function(data) {
+  $http.get('api/' + $scope.user._id + '/quotes').success(function(data) {
     $scope.quotes = data;
     $timeout(function() {
       $('.grid').masonry({
@@ -67,12 +84,15 @@ angular.module('quotesApp', ['ui.router'])
       });
     });
   }; 
+
 })
 
-.controller('NewQuoteController', function($scope, $http, $location) {
-  $scope.test = 'New Quote';
-  $scope.user = 'LawlietBlack';
-  $scope.userId = '1337';
+
+.controller('NewQuoteController', function($scope, $http, $location, $auth) {
+  $scope.user = $auth.getCurrentUser();
+  if(!$scope.user) {
+    $location.path('/login');
+  }
   $scope.newQuote = {};
   $scope.createQuote = function() {
     if(!$scope.newQuote.img || !$scope.newQuote.quote || !$scope.newQuote.source ) {
@@ -82,8 +102,8 @@ angular.module('quotesApp', ['ui.router'])
       img: $scope.newQuote.img,
       quote: $scope.newQuote.quote,
       source: $scope.newQuote.source,
-      user: $scope.user,
-      userId: $scope.userId,
+      user: $scope.user.username,
+      userId: $scope.user._id,
       starred: []
     }).success(function(data) {
       console.log(data);
@@ -92,5 +112,32 @@ angular.module('quotesApp', ['ui.router'])
       console.log(err);
     });
   }
-    
+})
+
+.controller('LoginController', function($scope, $auth, $window) {
+  $scope.loginOauth = function(provider) {
+    $window.location.href = '/auth/' + provider;
+  };
+})
+
+.directive('errSrc', function() {
+  return {
+    link: function($scope, $element, $attrs) {
+      $element.bind('error', function() {
+        if($attrs.src != $attrs.errSrc) {
+          $attrs.$set('src', $attrs.errSrc);
+        }
+      });
+    }
+  }
+})
+
+.filter('reverse', function() {
+  return function(items) {
+    if(!items) {
+      return items;
+    } else {
+      return items.slice().reverse();
+    }
+  };
 })

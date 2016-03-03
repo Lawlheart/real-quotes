@@ -245,6 +245,13 @@ html, body {
   header.navigation ul li.nav-link.greeting {
     display: none; } }
 
+.clearfix:before, .clearfix:after {
+  display: table;
+  content: " "; }
+
+.clearfix:after {
+  clear: both; }
+
 @media screen and (max-width: 53.75em) {
   main {
     margin-top: 100px; } }
@@ -290,6 +297,33 @@ html, body {
   width: 100%;
   height: 100%;
   box-shadow: inset 10px 10px 20px 0 #555, inset -10px -10px 20px 0 #555; }
+
+#login h1 {
+  color: #ddd;
+  text-align: center;
+  font-family: 'Vidaloka', sans-serif; }
+
+.social {
+  width: 230px;
+  margin: 20px auto;
+  padding: 0; }
+  .social li {
+    list-style: none;
+    text-align: center;
+    width: 230px;
+    margin: 10px auto;
+    height: 40px;
+    background-color: #666;
+    border-radius: 5px; }
+    .social li a {
+      display: block;
+      height: 100%;
+      width: 100%;
+      text-decoration: none;
+      font-weight: bold;
+      color: #222;
+      padding: 10px;
+      font-size: 20px; }
 
 #newquote {
   max-width: 68em;
@@ -339,5 +373,33 @@ html, body {
     background-color: #555;
     border: 1px solid #444;
     cursor: pointer; }
+
+footer {
+  clear: both;
+  font-size: 0.75em;
+  padding-top: 50px;
+  text-align: center; }
+  footer .social-icon {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%); }
+
+.page-wrap {
+  min-height: 100%;
+  /* equal to footer height */
+  margin-bottom: -131px; }
+
+.page-wrap:after {
+  content: "";
+  display: block; }
+
+.footer, .page-wrap:after {
+  height: 131px; }
+
+.notice {
+  font-size: 0.85rem; }
 
 /*# sourceMappingURL=main.css.map */

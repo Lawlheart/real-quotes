@@ -9,10 +9,11 @@
   <base href="/">
 </head>
 <body ng-app="quotesApp">
+  <div class="page-wrap">
   <header class="navigation" role="banner">
     <div class="navigation-wrapper">
       <a href="javascript:void(0)" class="logo">
-        <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png" alt="Logo Image">
+        <img src="/public/img/logo.png" alt="Logo Image">
       </a>
       <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">Definitely Real Quotes | MENU</a>
       <nav role="navigation">
@@ -25,9 +26,9 @@
       </nav>
       <div class="navigation-tools">
         <ul id="login-menu" class="navigation-menu show">
-          <li class="nav-link greeting">Hello User!</li>
-          <li class="nav-link"><a href="javascript:void(0)">Login</a></li>
-          <li class="nav-link"><a href="javascript:void(0)">Logout</a></li>
+          <li class="nav-link greeting" ng-hide="!user.username">Hello {{user.username}}</li>
+          <li class="nav-link"><a href="/login">Login</a></li>
+          <li class="nav-link"><a href="javascript:void(0)" ng-click="logout()">Logout</a></li>
         </ul>
       </div>
     </div>
@@ -35,12 +36,23 @@
 
 
   <div ui-view></div>
-
+  </div>
+  <footer class="clearfix">
+    <a href="https://github.com/LawlietBlack" target="_blank"><img src="/public/img/icons/git.png" alt="Github Logo" class="social-icon" /></a>
+    <a href="https://twitter.com/LawlietBlack" target="_blank"><img src="/public/img/icons/twitter.png" alt="Twitter Logo" class="social-icon" /></a>
+    <a href="http://www.codecademy.com/lawlietblack" target="_blank"><img src="/public/img/icons/codecademy.png" alt="Codecademy Logo" class="social-icon" /></a>
+    <a href="https://teamtreehouse.com/kennethblack" target="_blank"><img src="/public/img/icons/treehouse.png" alt="Treehouse Logo" class="social-icon" /></a>
+    <a href="https://www.linkedin.com/in/kennethrblack" target="_blank"><img src="/public/img/icons/linkedin.png" alt="LinkedIn Logo" class="social-icon" /></a>
+    <a href="https://www.facebook.com/kenny.black.39750" target="_blank"><img src="/public/img/icons/facebook.png" alt="Facebook Logo" class="social-icon" /></a>
+    <a href="http://freecodecamp.com/lawlietblack" target="_blank"><img src="/public/img/icons/fcc.png" alt="FreeCodeCamp Logo" class="social-icon" /></a>
+    <p>&copy; 2015 Kenneth Black.</p>
+  </footer>
   
   <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.js'></script>
   <script src='//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular.js'></script>
   <script src='//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.js'></script>
   <script src='//cdnjs.cloudflare.com/ajax/libs/masonry/4.0.0/masonry.pkgd.js'></script>
   <script src='controllers/main.client.js'></script>
+  <script src='controllers/auth.client.js'></script>
 </body>
 </html>
