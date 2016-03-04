@@ -256,6 +256,12 @@ html, body {
   main {
     margin-top: 100px; } }
 
+.scripty {
+  font-family: 'Lobster', serif; }
+
+.center {
+  text-align: center; }
+
 .card {
   background-color: #555;
   width: 240px;
@@ -288,6 +294,38 @@ html, body {
     position: relative;
     background-color: #444;
     border: 1px solid #333; }
+  .card .user-box {
+    clear: both;
+    padding: 10px;
+    position: relative;
+    z-index: 100;
+    background-color: #333; }
+    .card .user-box .user-link {
+      cursor: pointer;
+      float: left;
+      height: 40px;
+      overflow: auto; }
+      .card .user-box .user-link:hover {
+        background-color: #222; }
+    .card .user-box img {
+      float: left;
+      height: 40px; }
+    .card .user-box p {
+      font-family: 'Lobster', serif;
+      float: left;
+      margin: 10px; }
+    .card .user-box .stars {
+      background-color: #444;
+      border-radius: 50%;
+      position: relative;
+      cursor: pointer;
+      z-index: 110;
+      height: 34px;
+      margin: 3px 0;
+      padding: 8px 10px;
+      float: right; }
+      .card .user-box .stars:hover {
+        background-color: #222; }
 
 .shadow {
   content: '';

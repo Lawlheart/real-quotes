@@ -28,7 +28,7 @@ angular.module('quotesApp')
   }
 })
 
-.run(function($auth, $rootScope, $http) {
+.run(function($auth, $rootScope, $http, $location) {
   $rootScope.logout = $auth.logout;
   if(!$auth.isLoggedIn()) {
     $http.get('api/me').success(function(data) {
@@ -50,4 +50,16 @@ angular.module('quotesApp')
       //Do something when the user is connected
     }
   }, true);
+  $rootScope.userPage = function(userid) {
+    $location.path('/user/' + userid);
+  };
+  $rootScope.star = function(quote) {
+    var user = $auth.getCurrentUser();
+    if(user && quote.starred.indexOf(user._id) < 0) {
+      quote.starred.push(user._id);
+    } else if(user) {
+      quote.starred.splice(quote.starred.indexOf(user._id), 1);
+    }
+    $http.put('api/quotes/' + quote._id, quote);
+  }
 })

@@ -9,6 +9,7 @@ var Quote = new Schema({
   source: String,
   user: String,
   userId: String,
+  userImg: String,
   starred: Array
 });
 

@@ -38,7 +38,12 @@ main {
     }
   }
 }
-
+.scripty {
+  font-family: 'Lobster', serif;
+}
+.center {
+  text-align: center;
+}
 .card {
   @include clearfix;
   background-color: #555;
@@ -72,6 +77,45 @@ main {
     position: relative;
     background-color: #444;
     border: 1px solid #333;
+  }
+  .user-box {
+    clear: both;
+    padding: 10px;
+    position: relative;
+    z-index: 100;
+    background-color: #333;
+    .user-link {
+      cursor: pointer;
+      float: left;
+      height: 40px;
+      overflow: auto;
+      &:hover {
+        background-color: #222;
+      }
+    }
+    img {
+      float: left;
+      height: 40px;
+    }
+    p {
+      font-family: 'Lobster', serif;
+      float: left;
+      margin: 10px;
+    }
+    .stars {
+      background-color: #444;
+      border-radius: 50%;
+      position: relative;
+      cursor: pointer;
+      z-index: 110;
+      height: 34px;
+      margin: 3px 0;
+      padding: 8px 10px;
+      float: right;
+      &:hover {
+        background-color: #222;
+      }
+    }
   }
 }
 .shadow {

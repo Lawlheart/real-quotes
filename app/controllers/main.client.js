@@ -30,6 +30,7 @@ angular.module('quotesApp', ['ui.router'])
 
 .controller('MainController', function($scope, $http, $timeout, $auth) {
   $scope.editEnabled = false;
+  $scope.mainPage = true;
   $http.get('api/quotes').success(function(data) {
     $scope.quotes = data;
     $timeout(function() {
@@ -45,6 +46,9 @@ angular.module('quotesApp', ['ui.router'])
 .controller('UserQuotesController', function($scope, $http, $stateParams, $timeout) {
   $http.get('api/' + $stateParams.userid + '/quotes').success(function(data) {
     $scope.quotes = data;
+    if(data) {
+      $scope.username = data[0].user;
+    }
     $timeout(function() {
       $('.grid').masonry({
         itemSelector: '.grid-item',
@@ -104,6 +108,7 @@ angular.module('quotesApp', ['ui.router'])
       source: $scope.newQuote.source,
       user: $scope.user.username,
       userId: $scope.user._id,
+      userImg: $scope.user.image,
       starred: []
     }).success(function(data) {
       console.log(data);
