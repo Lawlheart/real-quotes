@@ -1,5 +1,5 @@
 <main>
-  <h1 class="scripty center" ng-hide="mainPage">{{username}}'s Quotes</h1>
+  <h1 class="scripty center" ng-show="pageType === 'user'">{{username}}'s Quotes</h1>
   <div class="grid">
     <div class="card grid-item" ng-repeat="card in quotes | reverse" ng-hide="!card.img || !card.source || !card.quote">
       <div class="image">
@@ -8,8 +8,8 @@
       <div class="quote">
         "{{card.quote}}"<span class="source"> - {{card.source}}</span>
       </div>
-      <button class="delete-quote clearfix" ng-click="delete(card._id)" ng-show="editEnabled"><i class="fa fa-times"></i> delete</button>
-      <div class="user-box clearfix" ng-hide="editEnabled">
+      <button class="delete-quote clearfix" ng-click="delete(card._id)" ng-show="pageType === 'edit'"><i class="fa fa-times"></i> delete</button>
+      <div class="user-box clearfix" ng-hide="pageType === 'edit'">
         <div class="user-link" ng-click="userPage(card.userId)">
           <img src="#" ng-src="{{card.userImg}}" alt="">
           <p>{{card.user}}</p>

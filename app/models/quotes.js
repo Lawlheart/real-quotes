@@ -11,6 +11,6 @@ var Quote = new Schema({
   userId: String,
   userImg: String,
   starred: Array
-});
+}, {strict: false});
 
 module.exports = mongoose.model('Quote', Quote);

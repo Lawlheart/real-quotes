@@ -1,7 +1,7 @@
 <main id="login">
-  <h1>Log In</h1>
+  <h1><span ng-show="!user">Log In</span><span ng-hide="!user">Link Accounts</span></h1>
   <ul class="social">
-    <li><a href="javascript:void(0)" ng-click="loginOauth('twitter')" class="twitter"><i class="fa fa-twitter"></i> Log in with Twitter</a></li>
-    <li><a href="javascript:void(0)" ng-click="loginOauth('github')" class="github"><i class="fa fa-github"></i> Log in with GitHub</a></li>
+    <li ng-show="!user.twitter"><a href="javascript:void(0)" ng-click="loginOauth('twitter')" class="twitter"><i class="fa fa-twitter"></i> Log in with Twitter</a></li>
+    <li ng-show="!user.github"><a href="javascript:void(0)" ng-click="loginOauth('github')" class="github"><i class="fa fa-github"></i> Log in with GitHub</a></li>
   </ul>
 </main>

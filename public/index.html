@@ -20,15 +20,16 @@
         <ul id="js-navigation-menu" class="navigation-menu show">
           <li class="nav-link title">DEFINITELY Real Quotes</li>
           <li class="nav-link"><a href="/">Recent</a></li>
-          <li class="nav-link"><a href="/myquotes">My Quotes</a></li>
-          <li class="nav-link"><a href="/newquote">Create</a></li>
+          <li class="nav-link" ng-hide="!user" ng-cloak><a href="/myquotes">My Quotes</a></li>
+          <li class="nav-link" ng-hide="!user" ng-cloak><a href="/newquote">Create</a></li>
         </ul>
       </nav>
       <div class="navigation-tools">
         <ul id="login-menu" class="navigation-menu show">
-          <li class="nav-link greeting" ng-hide="!user.username">Hello {{user.username}}</li>
-          <li class="nav-link"><a href="/login">Login</a></li>
-          <li class="nav-link"><a href="javascript:void(0)" ng-click="logout()">Logout</a></li>
+          <li class="nav-link greeting" ng-hide="!user" ng-cloak>Hello {{user.username}}</li>
+          <li class="nav-link" ng-show="!user" ng-cloak><a href="/login">Login</a></li>
+          <li class="nav-link" ng-hide="!user" ng-cloak><a href="/login">Link</a></li>
+          <li class="nav-link" ng-hide="!user" ng-cloak><a href="javascript:void(0)" ng-click="logout()">Logout</a></li>
         </ul>
       </div>
     </div>

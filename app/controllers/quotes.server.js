@@ -23,6 +23,7 @@ function QuotesController() {
       source: req.body.source,
       user: req.body.user,
       userId: req.body.userId,
+      userImg: req.body.userImg,
       starred: []
     }).save().then(function(quote) {
       res.json(quote)

@@ -30,6 +30,7 @@ angular.module('quotesApp')
 
 .run(function($auth, $rootScope, $http, $location) {
   $rootScope.logout = $auth.logout;
+  $rootScope.currentPath = $location.path();
   if(!$auth.isLoggedIn()) {
     $http.get('api/me').success(function(data) {
       $auth.setUser(data);

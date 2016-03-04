@@ -30,7 +30,7 @@ angular.module('quotesApp', ['ui.router'])
 
 .controller('MainController', function($scope, $http, $timeout, $auth) {
   $scope.editEnabled = false;
-  $scope.mainPage = true;
+  $scope.pageType = 'stream';
   $http.get('api/quotes').success(function(data) {
     $scope.quotes = data;
     $timeout(function() {
@@ -44,6 +44,7 @@ angular.module('quotesApp', ['ui.router'])
 })
 
 .controller('UserQuotesController', function($scope, $http, $stateParams, $timeout) {
+  $scope.pageType = 'user';
   $http.get('api/' + $stateParams.userid + '/quotes').success(function(data) {
     $scope.quotes = data;
     if(data) {
@@ -60,7 +61,9 @@ angular.module('quotesApp', ['ui.router'])
 })
 
 .controller('MyQuotesController', function($scope, $http, $timeout, $auth, $location) {
+  $scope.pageType = 'edit';
   $scope.user = $auth.getCurrentUser();
+  $scope.myPage = true;
   if(!$scope.user) {
     $location.path('/login');
   }
@@ -91,7 +94,6 @@ angular.module('quotesApp', ['ui.router'])
 
 })
 
-
 .controller('NewQuoteController', function($scope, $http, $location, $auth) {
   $scope.user = $auth.getCurrentUser();
   if(!$scope.user) {
@@ -102,7 +104,7 @@ angular.module('quotesApp', ['ui.router'])
     if(!$scope.newQuote.img || !$scope.newQuote.quote || !$scope.newQuote.source ) {
       return false;
     }
-    $http.post('api/quotes', {
+    var quote = {
       img: $scope.newQuote.img,
       quote: $scope.newQuote.quote,
       source: $scope.newQuote.source,
@@ -110,7 +112,9 @@ angular.module('quotesApp', ['ui.router'])
       userId: $scope.user._id,
       userImg: $scope.user.image,
       starred: []
-    }).success(function(data) {
+    };
+    console.log(quote)
+    $http.post('api/quotes', quote).success(function(data) {
       console.log(data);
       $location.path('/myquotes')
     }).error(function(err) {

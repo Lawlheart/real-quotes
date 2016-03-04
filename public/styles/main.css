@@ -245,6 +245,9 @@ html, body {
   header.navigation ul li.nav-link.greeting {
     display: none; } }
 
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important; }
+
 .clearfix:before, .clearfix:after {
   display: table;
   content: " "; }
