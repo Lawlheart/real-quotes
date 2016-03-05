@@ -20,8 +20,9 @@ Fake quote sharing site inspired by John Oliver’s segment on misappropriated q
  - Express.js
  - Node.js
  - RESTful APIs
+ - Sass
+ - Bourbon
  - HTML5
- - CSS3
 
 ##### User Stories
 
