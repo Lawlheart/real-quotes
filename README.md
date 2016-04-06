@@ -9,6 +9,7 @@ Fake quote sharing site inspired by John Oliver’s segment on misappropriated q
  - How to link multiple social media accounts into one
  - How to handle back end authentication on the front end with node
  - How to block api endpoints based on credentials
+ - How to add New Relic analytics to a heroku app
 
 ##### Skills used 
 
