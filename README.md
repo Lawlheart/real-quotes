@@ -1,5 +1,5 @@
 # Definitely Real Quotes
-##### by Kenneth Black
+##### by Kaia McIntyre
 
 Fake quote sharing site inspired by John Oliver’s segment on misappropriated quotes. Built with AngularJS, Node, Express, MongoDB, oAuth, and Sass.
 
